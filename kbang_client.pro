@@ -7,7 +7,8 @@ CONFIG += qt
 CONFIG += release \
     warn_on
 QT += network \
-    xml
+    xml \
+    widgets
 RESOURCES += src/client/resources/client.qrc
 INCLUDEPATH += src/client \
     src/common
@@ -112,6 +113,13 @@ win32 {
     debug:LIBPATH += debug/lib
     release:LIBPATH += release/lib
 }
-LIBS += -lkbang_common
+
 TARGET = kbang-client
 QMAKE_CXXFLAGS_DEBUG += -Wall
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../builds/build-kbang_common-win32-Debug/release/lib/ -lkbang_common
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../builds/build-kbang_common-win32-Debug/release/lib/ -lkbang_commond
+else:unix: LIBS += -L$$PWD/../builds/build-kbang_common-win32-Debug/release/lib/ -lkbang_common
+
+INCLUDEPATH += $$PWD/../builds/build-kbang_common-win32-Debug/release
+DEPENDPATH += $$PWD/../builds/build-kbang_common-win32-Debug/release

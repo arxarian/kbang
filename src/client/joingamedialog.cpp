@@ -45,10 +45,10 @@ JoinGameDialog::JoinGameDialog(QWidget *parent, ServerConnection* serverConnecti
     //playerListView->header()->setResizeMode(0, QHeaderView::Stretch);
     playerListView->header()->setStretchLastSection(0);
     playerListView->setHeaderLabels(QStringList() << tr("Player") << "" << "" << "");
-    playerListView->header()->setResizeMode(0, QHeaderView::Stretch);
-    playerListView->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-    playerListView->header()->setResizeMode(2, QHeaderView::ResizeToContents);
-    playerListView->header()->setResizeMode(3, QHeaderView::ResizeToContents);
+    playerListView->header()->setSectionResizeMode(0, QHeaderView::Stretch);    //qt4 to qt5 - setResizeMode
+    playerListView->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);    //qt4 to qt5 - setResizeMode
+    playerListView->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);    //qt4 to qt5 - setResizeMode
+    playerListView->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);    //qt4 to qt5 - setResizeMode
     /*
     playerListView->header()->resizeSection(0, 16);
     playerListView->header()->resizeSection(1, 16);

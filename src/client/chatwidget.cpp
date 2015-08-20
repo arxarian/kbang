@@ -50,7 +50,7 @@ ChatWidget::~ChatWidget()
 void ChatWidget::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
-    painter.fillRect(event->rect().intersect(contentsRect()), QColor(0, 0, 0, 32));
+    painter.fillRect(event->rect().intersected(contentsRect()), QColor(0, 0, 0, 32)); //qt4 to qt5 - intersect
 }
 
 void ChatWidget::clear()
@@ -60,7 +60,7 @@ void ChatWidget::clear()
 
 void ChatWidget::incomingMessage(int, const QString& senderName, const QString& message)
 {
-    mp_chatView->append(QString("<b>%1:</b> %2").arg(Qt::escape(senderName)).arg(Qt::escape(message)));
+    mp_chatView->append(QString("<b>%1:</b> %2").arg(QString(senderName).toHtmlEscaped().arg(QString(message).toHtmlEscaped()))); //qt4 to qt5 Qt::escape
 }
 
 void ChatWidget::sendMessage()

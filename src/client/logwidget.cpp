@@ -39,7 +39,7 @@ LogWidget::~LogWidget()
 void LogWidget::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
-    painter.fillRect(event->rect().intersect(contentsRect()), QColor(0, 0, 0, 32));
+    painter.fillRect(event->rect().intersected(contentsRect()), QColor(0, 0, 0, 32)); //qt4 to qt5 - intersect
 }
 
 
